@@ -1,0 +1,159 @@
+@use 'colors';
+%section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  color: white;
+  scroll-snap-align: start;
+}
+
+.intro {
+  @extend %section;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  background: linear-gradient(
+      0deg,
+      rgba(colors.$mainColor, 0.3),
+      rgba(colors.$mainColor, 0.3)
+    ),
+    url("https://source.unsplash.com/oMpAz-DN-9I/1920x1080") no-repeat center /
+      cover;
+  padding: 20px;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.7);
+
+  h1 {
+    font-family: "Exo 2", sans-serif;
+    text-shadow: 2px 2px 2px black;
+  }
+  h2 {
+    color: colors.$detailColor;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 2px black;
+  }
+  p {
+    text-shadow: 1px 1px 1px black;
+  }
+
+  p::before {
+    content: "# ";
+  }
+
+  .ir {
+    display: block;
+    overflow: visible;
+    padding: 0 0 100%;
+    position: relative;
+    height: 0;
+    width: 100%;
+  }
+
+  .ir > * {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .contact-icons {
+    margin: 0 auto;
+  }
+
+  .soc {
+    display: block;
+    font-size: 0;
+    list-style: none;
+    margin: 3rem auto;
+    text-align: center;
+    width: 100%;
+  }
+  .soc li {
+    display: inline-block;
+    margin: 0 1.2rem;
+  }
+  .soc a,
+  .soc svg {
+    display: block;
+  }
+  .soc a {
+    height: 2.6rem;
+    width: 2.6rem;
+
+    background: linear-gradient(
+      45deg,
+      colors.$mainColor 30%,
+      colors.$backgroundColor
+    );
+    box-shadow: 0px 10px 5px -5px rgba(0, 0, 0, 0.7);
+  }
+
+  svg {
+    fill: white;
+  }
+
+  .photoCredit {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+
+    a {
+      color: grey;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    text-align: center;
+
+    h1 {
+      font-size: 5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    p::before {
+      content: "";
+    }
+
+    .soc a {
+      height: 4rem;
+      width: 4rem;
+    }
+  }
+}
+
+.portfolio {
+  @extend %section;
+}
+
+.experience {
+  @extend %section;
+}
+
+.education {
+  @extend %section;
+}
+
+.skills {
+  @extend %section;
+}
+
+.about {
+  @extend %section;
+}
+
+.contact {
+  @extend %section;
+}

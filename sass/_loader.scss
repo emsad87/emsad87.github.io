@@ -1,0 +1,43 @@
+@use 'colors';
+.loadingScreen {
+  display: none;
+}
+.loading {
+  overflow: hidden;
+
+  .loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(
+      45deg,
+      colors.$mainColor 30%,
+      colors.$backgroundColor
+    );
+
+    .loader {
+      border: 10px solid transparent;
+      border-radius: 50%;
+      border-top: 10px solid colors.$detailColor;
+      border-bottom: 10px solid colors.$detailColor;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

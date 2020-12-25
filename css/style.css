@@ -1,0 +1,433 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(black 15%, transparent 16%) 0 0, radial-gradient(black 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+  background-color: #282828;
+  background-size: 16px 16px;
+  background-attachment: fixed;
+  font-family: "Roboto", sans-serif;
+}
+
+img {
+  display: block;
+}
+
+.loadingScreen {
+  display: none;
+}
+
+.loading {
+  overflow: hidden;
+}
+.loading .loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(45deg, #001b66 30%, #385dc2);
+}
+.loading .loadingScreen .loader {
+  border: 10px solid transparent;
+  border-radius: 50%;
+  border-top: 10px solid #e1a100;
+  border-bottom: 10px solid #e1a100;
+  width: 120px;
+  height: 120px;
+  /* Safari */
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #001b66;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #002280;
+  border-style: solid;
+  border-width: 4px 0px;
+  /* 5px top and bottom, 20px on the sides */
+  border-color: #e1a100;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e1a100;
+}
+
+.topBtn {
+  position: fixed;
+  display: block;
+  right: 0px;
+  bottom: 0px;
+  transform: translateY(100%);
+  z-index: 99;
+  padding: 25px 35px;
+  background: linear-gradient(-45deg, #001b66 30%, #385dc2);
+  box-shadow: 10px 5px 5px 0px rgba(0, 0, 0, 0.7);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+.topBtn span {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  display: inline-block;
+  height: 0;
+  width: 0;
+  border: 15px solid transparent;
+  border-bottom-color: #ffffff;
+  transform: translate(-25%, -75%);
+}
+
+.topBtnShow {
+  bottom: 20px;
+  transform: translateY(0%);
+}
+
+/* NAVPANEL BUTTON */
+.navBtn {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 99;
+  padding: 10px;
+  padding-left: 20px;
+  transform: translateY(-110%);
+  background: linear-gradient(45deg, #001b66 30%, #385dc2);
+  box-shadow: -10px 5px 5px 0px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.navIcon {
+  position: relative;
+  width: 30px;
+  height: 25px;
+  transform: rotate(0deg);
+  z-index: 99;
+  transition: 0.5s ease-in-out;
+}
+.navIcon span {
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  left: 0px;
+  transform: rotate(0deg);
+  display: block;
+  background-color: white;
+  border-radius: 9px;
+  transition: 0.25s ease-in-out;
+  opacity: 1;
+}
+.navIcon span:nth-child(1) {
+  top: 0px;
+}
+.navIcon span:nth-child(2) {
+  top: 10px;
+}
+.navIcon span:nth-child(3) {
+  top: 20px;
+}
+.navIcon.hideNavIcon span:nth-child(1) {
+  top: 10px;
+  transform: rotate(135deg);
+}
+.navIcon.hideNavIcon span:nth-child(2) {
+  left: -30px;
+  opacity: 0;
+}
+.navIcon.hideNavIcon span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-135deg);
+}
+
+.showNavBtn {
+  top: 20px;
+  transform: translateY(0%);
+}
+
+/* NAVPANEL */
+.nav {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translate(-101%, -50%);
+  z-index: 99;
+  overflow-x: hidden;
+  transition: transform 0.5s;
+}
+
+.navList {
+  list-style: none;
+}
+.navList li {
+  margin: 10px 0;
+  text-align: right;
+  background: linear-gradient(45deg, #001b66 30%, #385dc2);
+  box-shadow: -10px 5px 5px 0px rgba(0, 0, 0, 0.7);
+}
+.navList li:last-child {
+  background: linear-gradient(45deg, #001b66 5%, #ff0000);
+}
+
+.navLink {
+  position: relative;
+  display: block;
+  padding: 10px;
+  padding-left: 30px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.navLink::before, .navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #e1a100;
+}
+.navLink::before {
+  width: 0px;
+  height: 100%;
+  transition: all 0.4s;
+}
+.navLink::after {
+  width: 100%;
+  height: 0px;
+}
+.navLink:not(.active):hover::before {
+  box-shadow: inset -2px 0px 2px -1px rgba(0, 0, 0, 0.7);
+  width: 5px;
+}
+.navLink:hover {
+  color: #e1a100;
+  transition: color 0.4s;
+}
+
+.active::after {
+  width: 100%;
+  box-shadow: inset 0 2px 2px -1px black;
+  animation: activeLink 0.5s forwards ease-in-out;
+}
+
+.showNav {
+  transform: translate(0%, -50%);
+}
+
+@keyframes activeLink {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 5px;
+  }
+}
+.contact, .about, .skills, .education, .experience, .portfolio, .intro {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  color: white;
+  scroll-snap-align: start;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background: linear-gradient(0deg, rgba(0, 27, 102, 0.3), rgba(0, 27, 102, 0.3)), url("https://source.unsplash.com/oMpAz-DN-9I/1920x1080") no-repeat center/cover;
+  padding: 20px;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.7);
+}
+.intro h1 {
+  font-family: "Exo 2", sans-serif;
+  text-shadow: 2px 2px 2px black;
+}
+.intro h2 {
+  color: #e1a100;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 2px black;
+}
+.intro p {
+  text-shadow: 1px 1px 1px black;
+}
+.intro p::before {
+  content: "> ";
+}
+.intro .ir {
+  display: block;
+  overflow: visible;
+  padding: 0 0 100%;
+  position: relative;
+  height: 0;
+  width: 100%;
+}
+.intro .ir > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.intro .contact-icons {
+  margin: 0 auto;
+}
+.intro .soc {
+  display: block;
+  font-size: 0;
+  list-style: none;
+  margin: 3rem auto;
+  text-align: center;
+  width: 100%;
+}
+.intro .soc li {
+  display: inline-block;
+  margin: 0 1.2rem;
+}
+.intro .soc a,
+.intro .soc svg {
+  display: block;
+}
+.intro .soc a {
+  height: 2.6rem;
+  width: 2.6rem;
+  background: linear-gradient(45deg, #001b66 30%, #385dc2);
+  box-shadow: 0px 10px 5px -5px rgba(0, 0, 0, 0.7);
+}
+.intro svg {
+  fill: white;
+}
+.intro .photoCredit {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.7rem;
+}
+.intro .photoCredit a {
+  color: grey;
+}
+@media screen and (min-width: 768px) {
+  .intro {
+    align-items: center;
+    text-align: center;
+  }
+  .intro h1 {
+    font-size: 5rem;
+  }
+  .intro h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .intro p::before {
+    content: "";
+  }
+  .intro .soc a {
+    height: 4rem;
+    width: 4rem;
+  }
+}
+
+.portfolio {
+  flex-direction: column;
+  padding: 20px;
+}
+.portfolio .projectCard {
+  background: linear-gradient(45deg, #001b66 30%, #385dc2);
+  box-shadow: 0px 50px 20px -30px black;
+  padding: 10px;
+  border-bottom: 5px solid #e1a100;
+}
+.portfolio .projectCard h3 {
+  text-align: center;
+}
+
+.skills {
+  /* Container for skill bars */
+}
+.skills .container {
+  width: 100%;
+  /* Full width */
+  background-color: #ddd;
+  /* Grey background */
+}
+.skills .skillBars {
+  text-align: right;
+  /* Right-align text */
+  padding-top: 10px;
+  /* Add top padding */
+  padding-bottom: 10px;
+  /* Add bottom padding */
+  color: white;
+  /* White text color */
+  /* Green */
+  /* Blue */
+  /* Red */
+  /* Dark Grey */
+}
+.skills .skillBars.html {
+  width: 90%;
+  background-color: #4caf50;
+}
+.skills .skillBars.css {
+  width: 80%;
+  background-color: #2196f3;
+}
+.skills .skillBars.js {
+  width: 65%;
+  background-color: #f44336;
+}
+.skills .skillBars.php {
+  width: 60%;
+  background-color: #808080;
+}
+
+rect {
+  transition: all 0.3s;
+}
+
+.hideNavIcon .l1 {
+  transform: rotate(45deg) translate(20px, -20px);
+}
+
+.hideNavIcon .l2 {
+  transform: translate(-100px, 0px);
+}
+
+.hideNavIcon .l3 {
+  transform: rotate(-45deg) translate(-40px, 0px);
+}
