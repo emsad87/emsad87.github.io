@@ -1,117 +1,120 @@
-@use 'colors';
+@use 'config' as *;
+
 %section {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
   min-height: 100vh;
   width: 100%;
-  color: white;
-  scroll-snap-align: start;
+  padding-top: 25px;
+
+  transition: transform 1s;
 }
 
+%card {
+  padding: $outerPadding;
+  background: $mainBackground;
+  box-shadow: $mainShadow;
+  border-bottom: $mainBorder;
+}
+
+// CONTAINER ELEMENT
+.container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90vw;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-bottom: 25px;
+
+  // overflow: auto;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+::marker {
+  color: $detailColor;
+}
+
+.readMore {
+  display: block;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.readMoreBtn {
+  padding: $innerPadding;
+  appearance: none;
+  outline: none;
+  border: none;
+  background-color: $backgroundColor;
+  margin-top: 15px;
+  color: inherit;
+}
+
+.project-card li,
+.job-card li,
+.profil-card__hobbies-list li {
+  list-style: square;
+  margin: 10px 30px;
+}
+
+// SECTION TITLE
+.section-title {
+  text-align: center;
+  color: $detailColor;
+  text-transform: uppercase;
+  text-shadow: 0px 2px 1px black;
+}
+
+// INTRO SECTION
 .intro {
   @extend %section;
 
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   flex-direction: column;
+  padding: 20px;
 
-  background: linear-gradient(
-      0deg,
-      rgba(colors.$mainColor, 0.3),
-      rgba(colors.$mainColor, 0.3)
-    ),
+  background: $backgroundOverlay,
     url("https://source.unsplash.com/oMpAz-DN-9I/1920x1080") no-repeat center /
       cover;
-  padding: 20px;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: $mainShadow;
 
   h1 {
     font-family: "Exo 2", sans-serif;
-    text-shadow: 2px 2px 2px black;
+    text-shadow: 0px 2px 1px black;
   }
+
   h2 {
-    color: colors.$detailColor;
-    font-size: 1rem;
     margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 2px black;
+
+    color: $detailColor;
+    font-size: 1rem;
+    text-shadow: 0px 2px 2px black;
   }
+
   p {
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 0px 2px 1px black;
   }
 
   p::before {
     content: "# ";
   }
 
-  .ir {
-    display: block;
-    overflow: visible;
-    padding: 0 0 100%;
-    position: relative;
-    height: 0;
-    width: 100%;
-  }
-
-  .ir > * {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-  }
-
-  .contact-icons {
-    margin: 0 auto;
-  }
-
-  .soc {
-    display: block;
-    font-size: 0;
-    list-style: none;
-    margin: 3rem auto;
-    text-align: center;
-    width: 100%;
-  }
-  .soc li {
-    display: inline-block;
-    margin: 0 1.2rem;
-  }
-  .soc a,
-  .soc svg {
-    display: block;
-  }
-  .soc a {
-    height: 2.6rem;
-    width: 2.6rem;
-
-    background: linear-gradient(
-      45deg,
-      colors.$mainColor 30%,
-      colors.$backgroundColor
-    );
-    box-shadow: 0px 10px 5px -5px rgba(0, 0, 0, 0.7);
-  }
-
-  svg {
-    fill: white;
-  }
-
-  .photoCredit {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    font-size: 0.7rem;
-
-    a {
-      color: grey;
-    }
-  }
-
   @media screen and (min-width: 768px) {
     align-items: center;
+
     text-align: center;
 
     h1 {
@@ -119,41 +122,416 @@
     }
 
     h2 {
-      font-size: 1.5rem;
       margin-bottom: 2.5rem;
-    }
 
-    p::before {
-      content: "";
-    }
-
-    .soc a {
-      height: 4rem;
-      width: 4rem;
+      font-size: 1.5rem;
     }
   }
 }
 
+// PORTFOLIO SECTION
 .portfolio {
   @extend %section;
+
+  .project-card {
+    @extend %card;
+    margin: $mainMargin 0;
+  }
+
+  .project__info {
+    padding-top: 25px;
+
+    p {
+      margin: 15px 0;
+    }
+    p:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  .project-card__button {
+    display: block;
+    padding: 15px;
+    width: 100%;
+
+    color: white;
+    text-align: center;
+
+    background: $backgroundColor;
+  }
+
+  .project__title {
+    margin-bottom: 15px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .project__info {
+      padding-top: 0px;
+      padding-left: 25px;
+    }
+
+    .project-card__button {
+      width: auto;
+      margin: 0 auto;
+    }
+  }
 }
 
-.experience {
-  @extend %section;
-}
-
-.education {
-  @extend %section;
-}
-
+// SKILLS SECTION
 .skills {
   @extend %section;
-}
 
+  text-transform: uppercase;
+
+  background: $mainBackground;
+
+  box-shadow: $sectionShadow;
+
+  .skills-card {
+    margin-top: 25px;
+  }
+
+  .skills-card__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 25px;
+  }
+
+  ul li {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+
+    background: linear-gradient(45deg, #001b66 30%, #001b66);
+    box-shadow: 0px 10px 5px -5px rgba(0, 0, 0, 0.7);
+    border-bottom: 5px solid #e1a100;
+
+    transition: transform 0.2s;
+  }
+
+  ul li:hover {
+    transform: scale(1.1);
+  }
+
+  svg {
+    width: 20%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .skills-card__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+// ABOUT SECTION
 .about {
   @extend %section;
+
+  background: $backgroundOverlay,
+    url("https://source.unsplash.com/2eP5AoaA7hc") fixed no-repeat center /
+      cover;
+
+  box-shadow: $sectionShadow;
+
+  z-index: 1;
+
+  h3 {
+    margin-bottom: 15px;
+  }
+
+  .profil-card__info,
+  .profil-card__info-list,
+  .profil-card__bio {
+    padding: $innerPadding 0px;
+  }
+
+  .profil-card__img {
+    @extend %card;
+  }
+
+  .profil-card__about {
+    border-top: $mainBorder;
+  }
+
+  .profil-card__hobbies {
+    border-top: $mainBorder;
+    padding-top: $innerPadding;
+  }
+
+  @media screen and (min-width: 768px) {
+    .profil-card {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      margin-top: $mainMargin;
+    }
+
+    .profil-card__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      border-bottom: 0px;
+      padding: 0px $outerPadding 0px 0px;
+    }
+
+    .profil-card__about {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: $outerPadding;
+      padding-top: 0px;
+
+      border-top: 0px;
+    }
+
+    .profil-card__bio {
+      padding: 0px;
+
+      p {
+        margin: 15px 0;
+      }
+    }
+
+    .profil-card__hobbies-list {
+      // display: grid;
+      // grid-template-columns: repeat(2, 1fr);
+      // grid-auto-rows: 1fr;
+
+      column-count: 2;
+
+      li {
+        white-space: nowrap;
+      }
+
+      :first-child {
+        margin-top: 0;
+      }
+    }
+  }
 }
 
+// EXPERIENCE SECTION
+.experience {
+  @extend %section;
+
+  background-color: #282828;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 35px,
+    rgba(255, 255, 255, 0.5) 35px,
+    rgba(255, 255, 255, 0.5) 70px
+  );
+  background-attachment: fixed;
+
+  .job-card {
+    @extend %card;
+    margin: $mainMargin 0;
+  }
+
+  h4 {
+    margin-bottom: 15px;
+  }
+
+  .job__year-range {
+    color: $detailColor;
+  }
+
+  .job__summary {
+    padding: 15px 0;
+
+    p {
+      margin: 15px 0;
+    }
+
+    :first-child {
+      margin-top: 0;
+    }
+  }
+
+  .job__conclusion {
+    padding: 15px 0;
+
+    border-top: $mainBorder;
+  }
+
+  @media screen and (min-width: 768px) {
+    .job-card {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-areas:
+        "det sum sum"
+        "con skl skl";
+
+      // display: grid;
+      // grid-template-columns: repeat(2, 1fr);
+      // grid-auto-rows: 1fr;
+    }
+
+    .job__details {
+      grid-area: det;
+      padding-right: 15px;
+    }
+
+    .job__summary {
+      padding-top: 0px;
+      padding-bottom: $innerPadding;
+      grid-area: sum;
+    }
+
+    .job__conclusion {
+      padding-top: $innerPadding;
+      padding-right: 15px;
+      border-top: $mainBorder;
+      grid-area: con;
+    }
+
+    .job__acquired-skills {
+      padding-top: $innerPadding;
+      border-top: $mainBorder;
+      grid-area: skl;
+    }
+
+    .job__skill-list {
+      // display: grid;
+      // grid-template-columns: repeat(3, 1fr);
+      // grid-auto-rows: 1fr;
+      column-count: 3;
+
+      li {
+        white-space: nowrap;
+      }
+
+      :first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+// EDUCATION SECTION
+.education {
+  @extend %section;
+
+  background: $backgroundOverlay,
+    url("https://source.unsplash.com/jHvedTh-avo") fixed no-repeat center /
+      cover;
+  box-shadow: $sectionShadow;
+
+  z-index: 1;
+
+  .education__school {
+    padding: $innerPadding 0px;
+  }
+
+  .education__courses {
+    padding-top: $innerPadding;
+
+    border-top: $mainBorder;
+  }
+
+  .edu-item {
+    margin: 10px 0;
+  }
+
+  .education__title,
+  .edu-item__year-range {
+    color: $detailColor;
+  }
+
+  @media screen and (min-width: 768px) {
+    .education-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .education__school {
+      padding: 0px $outerPadding 0px 0px;
+
+      text-align: right;
+
+      border-right: $mainBorder;
+    }
+
+    .education__courses {
+      padding-top: 0px;
+      padding-left: $outerPadding;
+
+      border-top: 0px;
+    }
+  }
+}
+
+// CONTACT SECTION
 .contact {
   @extend %section;
+
+  background: $mainBackground;
+
+  box-shadow: $sectionShadow;
+
+  .contactCard {
+    margin-top: $mainMargin;
+  }
+
+  .contact-form {
+    padding: $outerPadding;
+
+    background: $secondColor;
+    box-shadow: $sharpShadow;
+
+    border-left: $mainBorder;
+  }
+
+  .contact-buttons {
+    padding-top: $outerPadding;
+  }
+
+  .contactCard .social-icons__list {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .contactCard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 0px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-buttons {
+      padding-top: 0px;
+      padding-left: $outerPadding;
+    }
+  }
+}
+
+.footer {
+  text-shadow: 0px 2px 1px black;
+
+  .container {
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+    gap: 50px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .container {
+      flex-direction: row;
+    }
+  }
 }

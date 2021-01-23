@@ -1,0 +1,140 @@
+@use 'config' as *;
+
+/* reset */
+#contact-form input,
+#contact-form select,
+#contact-form textarea,
+#contact-form fieldset,
+#contact-form optgroup,
+#contact-form label,
+#contact-form #card-element:disabled {
+  font-family: inherit;
+  font-size: 100%;
+  color: inherit;
+  border: none;
+  border-radius: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#contact-form label,
+#contact-form legend,
+#contact-form ::placeholder {
+  font-size: 0.825rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0.2rem;
+  display: flex;
+  align-items: baseline;
+}
+
+#contact-form label {
+  text-transform: uppercase;
+}
+
+#contact-form ::placeholder {
+  color: $secondColor;
+}
+
+/* border, padding, margin, width */
+#contact-form input,
+#contact-form select,
+#contact-form textarea,
+#contact-form #card-element {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.75em 1rem;
+  margin-bottom: 1.5rem;
+  color: inherit;
+
+  background-color: $backgroundColor;
+  box-shadow: $sharpShadow;
+}
+
+#contact-form textarea {
+  resize: none;
+}
+
+#contact-form input:focus,
+#contact-form select:focus,
+#contact-form textarea:focus {
+  background-color: $backgroundColor;
+  outline-style: solid;
+  outline-width: thin;
+  outline-color: $detailColor;
+  outline-offset: 0px;
+}
+
+#contact-form [type="text"],
+#contact-form [type="email"] {
+  width: 100%;
+}
+
+#contact-form [type="button"],
+#contact-form [type="submit"],
+#contact-form [type="reset"] {
+  width: 100%;
+  cursor: pointer;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  color: inherit;
+  border-left: 0;
+
+  background: $backgroundColor;
+  box-shadow: $sharpShadow;
+}
+
+#contact-form [type="button"]:focus,
+#contact-form [type="submit"]:focus,
+#contact-form [type="reset"]:focus {
+  outline: none;
+}
+
+#contact-form [type="submit"],
+#contact-form [type="reset"] {
+  margin-bottom: 0;
+}
+
+#contact-form select {
+  text-transform: none;
+}
+
+#contact-form [type="checkbox"] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+  display: inline-block;
+  width: auto;
+  margin: 0 0.5em 0 0 !important;
+}
+
+#contact-form [type="radio"] {
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
+  appearance: radio;
+}
+
+/* address, locale */
+#contact-form fieldset.locale input[name="city"],
+#contact-form fieldset.locale select[name="state"],
+#contact-form fieldset.locale input[name="postal-code"] {
+  display: inline;
+}
+
+#contact-form fieldset.locale input[name="city"] {
+  width: 52%;
+}
+
+#contact-form fieldset.locale select[name="state"],
+#contact-form fieldset.locale input[name="postal-code"] {
+  width: 20%;
+}
+
+#contact-form fieldset.locale input[name="city"],
+#contact-form fieldset.locale select[name="state"] {
+  margin-right: 3%;
+}

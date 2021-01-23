@@ -1,0 +1,77 @@
+//  COLOR PALLET
+// #002280 Navy Blue
+// #385DC2 Indigo
+// #001B66 Royal Blue
+// #ff0000 Red
+// #E1A100 Senf Yellow
+
+// <link rel="preconnect" href="https://fonts.gstatic.com">
+// <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+// font-family: 'Exo 2', sans-serif;
+// font-family: 'Montserrat', sans-serif;
+
+$mainMargin: 25px;
+$outerPadding: 25px;
+$innerPadding: 15px;
+
+// $mainColor: #001b66;
+// $secondColor: #002280;
+$secondColor: #001b66;
+$mainColor: #002280;
+$backgroundColor: #385dc2;
+$highlightColor: #ff0000;
+$detailColor: #e1a100;
+
+$fontColor: #fff;
+
+$svgColor: #fff;
+$photoCreditColor: #999;
+
+$backgroundOverlay: linear-gradient(
+  0deg,
+  rgba($mainColor, 0.3),
+  rgba($mainColor, 0.3)
+);
+
+$mainBackground: linear-gradient(45deg, $mainColor 30%, $backgroundColor);
+$highlightBackground: linear-gradient(45deg, $mainColor 10%, $highlightColor);
+
+$mainShadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+  0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+  0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11),
+  0px 50px 20px -30px rgba(0, 0, 0, 0.7);
+
+$sectionShadow: 0px -10px 10px 0px rgba(0, 0, 0, 0.5), $mainShadow;
+
+$shadow4: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15),
+  0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.15);
+
+$shadow5: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+  0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12),
+  0 16px 16px rgba(0, 0, 0, 0.12);
+
+$shadow6: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+  0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11),
+  0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+
+$sharpShadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.2),
+  0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1),
+  0 16px 16px rgba(0, 0, 0, 0.05);
+
+$difuseShadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.12),
+  0 4px 4px rgba(0, 0, 0, 0.16), 0 8px 8px rgba(0, 0, 0, 0.2);
+
+$dreamyShadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+  0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+  0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+
+$shortShadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+  0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+  0 8px 16px rgba(0, 0, 0, 0.11);
+
+$longShadow: 0 2px 1px rgba(0, 0, 0, 0.09), 0 4px 2px rgba(0, 0, 0, 0.09),
+  0 8px 4px rgba(0, 0, 0, 0.09), 0 16px 8px rgba(0, 0, 0, 0.09),
+  0 32px 16px rgba(0, 0, 0, 0.09);
+
+$mainBorder: 5px solid $detailColor;

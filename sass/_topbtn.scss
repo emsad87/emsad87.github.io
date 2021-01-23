@@ -1,4 +1,5 @@
-@use 'colors';
+@use 'config' as *;
+
 .topBtn {
   position: fixed;
   display: block;
@@ -6,31 +7,26 @@
   bottom: 0px;
   transform: translateY(100%);
   z-index: 99;
-  padding: 25px 35px;
-  background: linear-gradient(
-    -45deg,
-    colors.$mainColor 30%,
-    colors.$backgroundColor
-  );
-  box-shadow: 10px 5px 5px 0px rgba(0, 0, 0, 0.7);
+  padding: 10px 15px;
+  padding-right: 25px;
+  background: $mainBackground;
+  box-shadow: $sharpShadow;
   color: white;
   cursor: pointer;
   transition: transform 0.5s;
 
   span {
-    position: absolute;
-    top: 50%;
-    left: 25%;
+    position: relative;
     display: inline-block;
     height: 0;
     width: 0;
     border: 15px solid transparent;
     border-bottom-color: #ffffff;
-    transform: translate(-25%, -75%);
+    transform: translateY(-5px);
   }
 }
 
 .topBtnShow {
-  bottom: 20px;
+  bottom: 25px;
   transform: translateY(0%);
 }

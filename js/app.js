@@ -10,16 +10,13 @@ window.addEventListener("load", () => {
   // GET ALL ELEMENTS WITH CLASS "observe"
   let sections = document.querySelectorAll(".observe");
 
-  // let introSection = document.getElementById("intro");
-  // let portfolioSection = document.getElementById("portfolio");
-  // let experienceSection = document.getElementById("experience");
-  // let educationSection = document.getElementById("education");
-  // let skillsSection = document.getElementById("skills");
-  // let aboutSection = document.getElementById("about");
-  // let contactSection = document.getElementById("contact");
+  let animElem = document.querySelectorAll(".animate");
 
   // REMOVE LOADING CLASS FROM BODY - SHOW NAVBAR BUTTON
-  body.classList.remove("loading");
+  document.querySelector(".loadingScreen").style.opacity = "0";
+  window.setTimeout(() => {
+    body.classList.remove("loading");
+  }, 500);
   navBtn.classList.add("showNavBtn");
 
   // IF BUTTON "toTop" IS CLICKED SCROLL TO TOP
@@ -53,33 +50,42 @@ window.addEventListener("load", () => {
   let callback = (entries, observer) => {
     entries.forEach((entry) => {
       // GET INTERSECTED ELEMENTS ID
-      let sectionId = entry.target.id;
+      if (!entry.target.classList.contains("animate")) {
+        let sectionId = entry.target.id;
 
-      // GET "navLink" WITH INTERSECTED ID IN HREF
-      let navLink = document.querySelector(
-        "#navPanel a[href*=" + sectionId + "]"
-      );
+        // GET "navLink" WITH INTERSECTED ID IN HREF
+        let navLink = document.querySelector(
+          "#navPanel a[href*=" + sectionId + "]"
+        );
 
-      // IF ELEMENT IS INTESECTING ADD "active" CLASS TO navLink ELEMENT WITH SAME ID IN HREF
-      if (entry.isIntersecting) {
-        navLink.classList.add("active");
+        // IF ELEMENT IS INTESECTING ADD "active" CLASS TO navLink ELEMENT WITH SAME ID IN HREF
+        if (entry.isIntersecting) {
+          navLink.classList.add("active");
 
-        // IF INTESECTED ELEMENT IS NOT "intro" SHOW toTop BUTTON
-        if (sectionId != "intro") {
-          topBtn.classList.add("topBtnShow");
+          // IF INTESECTED ELEMENT IS NOT "intro" SHOW toTop BUTTON
+          if (sectionId != "intro") {
+            topBtn.classList.add("topBtnShow");
+          } else {
+            topBtn.classList.remove("topBtnShow");
+          }
         } else {
-          topBtn.classList.remove("topBtnShow");
+          navLink.classList.remove("active");
         }
       } else {
-        navLink.classList.remove("active");
+        if (
+          entry.isIntersecting &&
+          entry.target.classList.contains("animate")
+        ) {
+          entry.target.classList.add("animation");
+        }
       }
     });
   };
 
   let options = {
     root: null,
-    rootMargin: "0px",
-    threshold: 0.5,
+    rootMargin: "-50%",
+    threshold: 0,
   };
 
   let observer = new IntersectionObserver(callback, options);
@@ -88,12 +94,7 @@ window.addEventListener("load", () => {
   sections.forEach((item) => {
     observer.observe(item);
   });
-
-  // observer.observe(introSection);
-  // observer.observe(portfolioSection);
-  // observer.observe(experienceSection);
-  // observer.observe(educationSection);
-  // observer.observe(skillsSection);
-  // observer.observe(aboutSection);
-  // observer.observe(contactSection);
+  animElem.forEach((item) => {
+    observer.observe(item);
+  });
 });

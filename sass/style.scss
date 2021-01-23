@@ -1,9 +1,9 @@
 @use 'main';
-@use 'colors';
+@use 'config';
 @use 'loader';
 @use 'scrollbar';
 @use 'topbtn';
 @use 'navbar';
 @use 'sections';
-
-@use 'test';
+@use 'contactForm';
+@use 'modal';

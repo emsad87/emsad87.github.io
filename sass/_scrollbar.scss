@@ -1,4 +1,5 @@
-@use 'colors';
+@use 'config' as *;
+
 // SCROLLBAR
 /* width */
 ::-webkit-scrollbar {
@@ -7,18 +8,18 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: colors.$mainColor;
+  background: $mainColor;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: colors.$secondColor;
+  background: $secondColor;
   border-style: solid;
   border-width: 4px 0px; /* 5px top and bottom, 20px on the sides */
-  border-color: colors.$detailColor;
+  border-color: $detailColor;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: colors.$detailColor;
+  background: $detailColor;
 }
