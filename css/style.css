@@ -508,6 +508,9 @@ a {
 .about .profil-card__about {
   border-top: 5px solid #e1a100;
 }
+.about .profil-card__about p {
+  margin: 15px 0;
+}
 .about .profil-card__hobbies {
   border-top: 5px solid #e1a100;
   padding-top: 15px;
@@ -535,9 +538,6 @@ a {
   }
   .about .profil-card__bio {
     padding: 0px;
-  }
-  .about .profil-card__bio p {
-    margin: 15px 0;
   }
   .about .profil-card__hobbies-list {
     column-count: 2;

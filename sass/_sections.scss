@@ -258,6 +258,10 @@
 
   .profil-card__about {
     border-top: $mainBorder;
+
+    p {
+      margin: 15px 0;
+    }
   }
 
   .profil-card__hobbies {
@@ -293,10 +297,6 @@
 
     .profil-card__bio {
       padding: 0px;
-
-      p {
-        margin: 15px 0;
-      }
     }
 
     .profil-card__hobbies-list {
