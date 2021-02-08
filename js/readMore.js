@@ -1,4 +1,4 @@
-var readMoreBtn = document.getElementsByClassName("readMoreBtn");
+var readMoreBtn = document.querySelectorAll(".readMoreBtn");
 var i;
 
 for (i = 0; i < readMoreBtn.length; i++) {
