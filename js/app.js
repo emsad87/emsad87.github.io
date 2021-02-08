@@ -2,21 +2,23 @@ window.addEventListener("load", () => {
   let body = document.querySelector("body");
 
   // GET ALL NAVBAR ELEMENTS
-  let navBtn = document.getElementById("navBtn");
-  let navIcon = document.getElementById("navIcon");
-  let navPanel = document.getElementById("navPanel");
-  let topBtn = document.getElementById("topBtn");
+  let navBtn = document.querySelector("#navBtn");
+  let navIcon = document.querySelector("#navIcon");
+  let navPanel = document.querySelector("#navPanel");
+  let topBtn = document.querySelector("#topBtn");
 
   // GET ALL ELEMENTS WITH CLASS "observe"
   let sections = document.querySelectorAll(".observe");
 
   let animElem = document.querySelectorAll(".animate");
 
-  // REMOVE LOADING CLASS FROM BODY - SHOW NAVBAR BUTTON
+  // HIDE LOADING SCREEN AND REMOVE "loading" CLASS FROM BODY
   document.querySelector(".loadingScreen").style.opacity = "0";
   window.setTimeout(() => {
     body.classList.remove("loading");
   }, 500);
+
+  // SHOW NAVBAR BUTTON
   navBtn.classList.add("showNavBtn");
 
   // IF BUTTON "toTop" IS CLICKED SCROLL TO TOP
@@ -25,8 +27,14 @@ window.addEventListener("load", () => {
     document.documentElement.scrollTop = 0;
   });
 
-  document.addEventListener("click", (evt) => {
-    let clickedElement = evt.target; // clicked element
+  // TOGGLE NAVPANEL AND NAVPANEL ICON
+  function navToggle() {
+    navPanel.classList.toggle("showNav");
+    navIcon.classList.toggle("hideNavIcon");
+  }
+
+  document.addEventListener("click", (e) => {
+    let clickedElement = e.target; // clicked element
     if (navPanel.classList.contains("showNav")) {
       navToggle();
     } else {
@@ -41,11 +49,6 @@ window.addEventListener("load", () => {
     }
   });
 
-  function navToggle() {
-    navPanel.classList.toggle("showNav");
-    navIcon.classList.toggle("hideNavIcon");
-  }
-
   // ACTIVE NAVBAR LINK - INTERSECTION
   let callback = (entries, observer) => {
     entries.forEach((entry) => {
@@ -55,14 +58,14 @@ window.addEventListener("load", () => {
 
         // GET "navLink" WITH INTERSECTED ID IN HREF
         let navLink = document.querySelector(
-          "#navPanel a[href*=" + sectionId + "]"
+          `#navPanel a[href*="${sectionId}"]`
         );
 
-        // IF ELEMENT IS INTESECTING ADD "active" CLASS TO navLink ELEMENT WITH SAME ID IN HREF
+        // IF ELEMENT IS INTERSECTING ADD "active" CLASS TO "navLink" ELEMENT WITH SAME ID IN HREF
         if (entry.isIntersecting) {
           navLink.classList.add("active");
 
-          // IF INTESECTED ELEMENT IS NOT "intro" SHOW toTop BUTTON
+          // IF INTERSECTED ELEMENT IS NOT "intro" SHOW "toTop" BUTTON
           if (sectionId != "intro") {
             topBtn.classList.add("topBtnShow");
           } else {
