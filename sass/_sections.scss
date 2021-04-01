@@ -246,7 +246,6 @@
     margin-bottom: 15px;
   }
 
-  .profil-card__info,
   .profil-card__info-list,
   .profil-card__bio {
     padding: $innerPadding 0px;
@@ -256,47 +255,46 @@
     @extend %card;
   }
 
-  .profil-card__about {
+  .profil-card__bio {
     border-top: $mainBorder;
+    border-bottom: $mainBorder;
+  }
 
-    p {
-      margin: 15px 0;
-    }
+  p {
+    margin: 15px 0;
   }
 
   .profil-card__hobbies {
-    border-top: $mainBorder;
     padding-top: $innerPadding;
   }
 
   @media screen and (min-width: 768px) {
     .profil-card {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
+      // display: grid;
+      // grid-template-columns: 1fr 2fr;
       margin-top: $mainMargin;
+
+      display: grid;
+      gap: $innerPadding;
+      grid-template-columns: 1fr 2fr;
+      grid-template-areas:
+        "img det det"
+        "soc hob hob";
     }
 
-    .profil-card__info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      border-bottom: 0px;
-      padding: 0px $outerPadding 0px 0px;
+    .profil-card__img {
+      grid-area: img;
     }
-
-    .profil-card__about {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-left: $outerPadding;
-      padding-top: 0px;
-
+    .profil-card .social-icons {
+      grid-area: soc;
+    }
+    .profil-card__bio {
+      grid-area: det;
       border-top: 0px;
     }
-
-    .profil-card__bio {
-      padding: 0px;
+    .profil-card__hobbies {
+      grid-area: hob;
+      width: 100%;
     }
 
     .profil-card__hobbies-list {
@@ -397,6 +395,7 @@
       padding-top: $innerPadding;
       border-top: $mainBorder;
       grid-area: skl;
+      width: 100%;
     }
 
     .job__skill-list {

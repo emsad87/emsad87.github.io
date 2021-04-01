@@ -500,44 +500,41 @@ a {
 .about h3 {
   margin-bottom: 15px;
 }
-.about .profil-card__info,
 .about .profil-card__info-list,
 .about .profil-card__bio {
   padding: 15px 0px;
 }
-.about .profil-card__about {
+.about .profil-card__bio {
   border-top: 5px solid #e1a100;
+  border-bottom: 5px solid #e1a100;
 }
-.about .profil-card__about p {
+.about p {
   margin: 15px 0;
 }
 .about .profil-card__hobbies {
-  border-top: 5px solid #e1a100;
   padding-top: 15px;
 }
 @media screen and (min-width: 768px) {
   .about .profil-card {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
     margin-top: 25px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "img det det" "soc hob hob";
   }
-  .about .profil-card__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-bottom: 0px;
-    padding: 0px 25px 0px 0px;
+  .about .profil-card__img {
+    grid-area: img;
   }
-  .about .profil-card__about {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-left: 25px;
-    padding-top: 0px;
-    border-top: 0px;
+  .about .profil-card .social-icons {
+    grid-area: soc;
   }
   .about .profil-card__bio {
-    padding: 0px;
+    grid-area: det;
+    border-top: 0px;
+  }
+  .about .profil-card__hobbies {
+    grid-area: hob;
+    width: 100%;
   }
   .about .profil-card__hobbies-list {
     column-count: 2;
@@ -602,6 +599,7 @@ a {
     padding-top: 15px;
     border-top: 5px solid #e1a100;
     grid-area: skl;
+    width: 100%;
   }
   .experience .job__skill-list {
     column-count: 3;
