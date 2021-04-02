@@ -430,13 +430,20 @@ a {
 .portfolio .project__info p:first-of-type {
   margin-top: 0;
 }
+.portfolio .project-cards__buttons {
+  display: flex;
+}
 .portfolio .project-card__button {
-  display: block;
+  display: inline-block;
   padding: 15px;
   width: 100%;
   color: white;
   text-align: center;
   background: #385dc2;
+  border-right: 5px solid #e1a100;
+}
+.portfolio .project-card__button:last-child {
+  border-right: none;
 }
 .portfolio .project__title {
   margin-bottom: 15px;
@@ -449,10 +456,6 @@ a {
   .portfolio .project__info {
     padding-top: 0px;
     padding-left: 25px;
-  }
-  .portfolio .project-card__button {
-    width: auto;
-    margin: 0 auto;
   }
 }
 
@@ -497,12 +500,12 @@ a {
   box-shadow: 0px -10px 10px 0px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11), 0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11), 0px 50px 20px -30px rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
+.about h2,
 .about h3 {
   margin-bottom: 15px;
 }
-.about .profil-card__info-list,
-.about .profil-card__bio {
-  padding: 15px 0px;
+.about .profil-card__info-list {
+  padding-top: 25px;
 }
 .about .profil-card__bio {
   border-top: 5px solid #e1a100;
@@ -511,14 +514,14 @@ a {
 .about p {
   margin: 15px 0;
 }
+.about .profil-card__bio,
 .about .profil-card__hobbies {
   padding-top: 15px;
 }
 @media screen and (min-width: 768px) {
   .about .profil-card {
-    margin-top: 25px;
     display: grid;
-    gap: 15px;
+    gap: 25px;
     grid-template-columns: 1fr 2fr;
     grid-template-areas: "img det det" "soc hob hob";
   }
@@ -535,6 +538,10 @@ a {
   .about .profil-card__hobbies {
     grid-area: hob;
     width: 100%;
+  }
+  .about .profil-card__bio,
+.about .profil-card__hobbies {
+    padding-top: 0;
   }
   .about .profil-card__hobbies-list {
     column-count: 2;
@@ -667,6 +674,8 @@ a {
 .contact .contactCard .social-icons__list {
   flex-direction: column;
   height: 100%;
+  width: fit-content;
+  margin: 0 auto;
 }
 @media screen and (min-width: 768px) {
   .contact .contactCard {
@@ -692,11 +701,22 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 50px 0;
-  gap: 50px;
+  gap: 2rem;
 }
 @media screen and (min-width: 768px) {
   .footer .container {
     flex-direction: row;
+    gap: 0;
+  }
+  .footer .container > * {
+    flex: 1 100%;
+  }
+  .footer .footer__copy {
+    text-align: center;
+  }
+  .footer .footer__credits {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
@@ -776,6 +796,8 @@ a {
 #contact-form [type=reset] {
   width: 100%;
   cursor: pointer;
+  -webkit-appearance: button;
+  -moz-appearance: button;
   appearance: button;
   color: inherit;
   border-left: 0;
@@ -799,6 +821,8 @@ a {
 }
 
 #contact-form [type=checkbox] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
   appearance: checkbox;
   display: inline-block;
   width: auto;
@@ -806,6 +830,8 @@ a {
 }
 
 #contact-form [type=radio] {
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
   appearance: radio;
 }
 
@@ -869,6 +895,16 @@ a {
 }
 
 /* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
 @keyframes animatetop {
   from {
     top: -300px;
