@@ -68,6 +68,11 @@ a {
   gap: 25px;
 }
 
+.about .social-icons__list {
+  justify-content: space-around;
+  gap: 0;
+}
+
 .social-icons__list-item {
   display: flex;
   align-items: center;
@@ -92,6 +97,11 @@ a {
 }
 
 @media screen and (min-width: 768px) {
+  .about .social-icons__list {
+    justify-content: space-between;
+    gap: 25px;
+  }
+
   .social-icon {
     width: 50px;
   }

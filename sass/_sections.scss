@@ -340,12 +340,44 @@
     margin-bottom: 15px;
   }
 
+  .job__details {
+    display: flex;
+    flex-direction: column;
+  }
+
   .job__year-range {
     color: $detailColor;
   }
 
+  .job__img {
+    min-height: 5rem;
+    height: 100%;
+    margin: 1rem 0;
+  }
+
+  .technician {
+    background: url("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80")
+      no-repeat center / cover;
+  }
+
+  .technician2 {
+    background: url("https://images.unsplash.com/photo-1511415932124-42efedd2eacf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80")
+      no-repeat center / cover;
+  }
+  .presenter {
+    background: url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80")
+      no-repeat top / cover;
+  }
+  .bartender {
+    background: url("https://images.unsplash.com/photo-1542181961-9590d0c79dab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80")
+      no-repeat center / cover;
+  }
+
   .job__summary {
     padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     p {
       margin: 15px 0;
@@ -533,6 +565,10 @@
     gap: 2rem;
   }
 
+  .footer__licence {
+    cursor: pointer;
+  }
+
   @media screen and (min-width: 768px) {
     .container {
       flex-direction: row;
@@ -542,11 +578,22 @@
     .container > * {
       flex: 1 100%;
     }
-    .footer__copy {
-      text-align: center;
-    }
+
+    .footer__logo,
+    .footer__copy,
     .footer__credits {
       display: flex;
+    }
+
+    .footer__logo {
+      justify-content: flex-start;
+    }
+
+    .footer__copy {
+      justify-content: center;
+    }
+
+    .footer__credits {
       justify-content: flex-end;
     }
   }
