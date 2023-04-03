@@ -340,12 +340,44 @@
     margin-bottom: 15px;
   }
 
+  .job__details {
+    display: flex;
+    flex-direction: column;
+  }
+
   .job__year-range {
     color: $detailColor;
   }
 
+  .job__img {
+    min-height: 5rem;
+    height: 100%;
+    margin: 1rem 0;
+  }
+
+  .technician {
+    background: url("https://source.unsplash.com/FO7JIlwjOtU") no-repeat center /
+      cover;
+  }
+
+  .technician2 {
+    background: url("https://source.unsplash.com/bjsaHc2jx3Y") no-repeat center /
+      cover;
+  }
+  .presenter {
+    background: url("https://source.unsplash.com/MYbhN8KaaEc") no-repeat top /
+      cover;
+  }
+  .bartender {
+    background: url("https://source.unsplash.com/pNIgH0y3upM") no-repeat center /
+      cover;
+  }
+
   .job__summary {
     padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     p {
       margin: 15px 0;
@@ -533,6 +565,10 @@
     gap: 2rem;
   }
 
+  .footer__licence {
+    cursor: pointer;
+  }
+
   @media screen and (min-width: 768px) {
     .container {
       flex-direction: row;
@@ -542,11 +578,22 @@
     .container > * {
       flex: 1 100%;
     }
-    .footer__copy {
-      text-align: center;
-    }
+
+    .footer__logo,
+    .footer__copy,
     .footer__credits {
       display: flex;
+    }
+
+    .footer__logo {
+      justify-content: flex-start;
+    }
+
+    .footer__copy {
+      justify-content: center;
+    }
+
+    .footer__credits {
       justify-content: flex-end;
     }
   }
